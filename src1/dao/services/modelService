@@ -1,0 +1,36 @@
+import { insertValuesInString } from '../util';
+
+export class ModelService {
+
+    constructor(http){
+        this.http = http;
+    }
+
+    getCollection(projectId) {
+
+        let params = {
+            projectId: projectId
+        };
+
+        let path = '/v1/projects/{projectId}/models';
+        path = insertValuesInString(path, params);
+
+        return this.http.get(path);
+
+    }
+
+    getOneById(projectId, modelId) {
+
+        let params = {
+            projectId: projectId,
+            modelId: modelId
+        };
+
+        let path = '/v1/projects/{projectId}/models/{modelId}';
+        path = insertValuesInString(path, params);
+
+        return this.http.get(path);
+
+    }
+
+}
